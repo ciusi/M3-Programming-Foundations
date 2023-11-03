@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap");
+body {
+  background-color: rgb(235, 228, 209);
+  color: rgb(38, 87, 124) font-family "Rubik", sans-serif;
+  margin: 50px;
+}
+
+@media (max-width: 768px) {
+  body {
+    margin: 10px; /* Margine più piccolo per schermi stretti */
+  }
+}
+
+@media (max-width: 768px) {
+}
+
+#header {
+  border-bottom: dotted 3px rgb(229, 86, 4);
+  border-top: dotted 3px rgb(229, 86, 4);
+}
+
+h1 {
+  text-align: center;
+  color: rgb(7, 46, 48);
+}
+
+#nomeModelloSmartphone {
+  color: rgb(229, 86, 4);
+  font-size: smaller;
+}
+
+#prezzi {
+  font-weight: bold;
+  font-size: larger;
+  color: rgb(37, 43, 72);
+}
+
+img {
+  max-width: 50%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+#descrizioniSmartphone {
+  font-size: smaller;
+}
+
+#ctaCommento {
+  font-size: smaller;
+  font-weight: bold;
+}
+
+/* Stile degli input */
+input[type="text"] {
+  padding: 10px;
+  border: 1px solid rgb(37, 43, 72); /* Colore del bordo */
+  background-color: rgb(235, 228, 209); /* Colore di sfondo */
+  color: rgb(38, 87, 124); /* Colore del testo */
+}
+
+input[type="submit"] {
+  padding: 10px 20px;
+  background-color: rgb(38, 87, 124); /* Colore di sfondo del pulsante */
+  color: rgb(255, 255, 255); /* Colore del testo del pulsante */
+  border: none;
+  cursor: pointer;
+}
+#footer {
+  background-color: rgb(3, 25, 42);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  margin-top: 25px;
+}
