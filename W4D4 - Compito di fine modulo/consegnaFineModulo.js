@@ -102,24 +102,34 @@ const jobs = [
     console.log("valore lavoro in minuscolo:", title);
     console.log("valore citta in minuscolo:", location);
 
-  //2. Per rendere la ricerca case insensitive trasformo i parametri lavoro e città in minuscolo.
+  //2. Per rendere la ricerca case insensitive trasformo i parametri lavoro e città in minuscolo con .toLowerCase
 
     for (let i = 0; i < jobs.length; i++) {
       const job = jobs[i];
       const jobTitle = job.title.toLowerCase();
       const jobLocation = job.location.toLowerCase();
-  
+
+  //3. Creo un ciclo per iterare i valori dell'array jobs però sempre case insensitive.
+  // in pratica const job = jobs[i] estrae dall'array e assegna a "job". prende l'elemento corrente i e lo assegna a job. Idem per location.   
+  // Però lo devo fare sommando di uno volta per volta e quindi metto ++. 
+
       if (jobTitle.includes(title) && jobLocation.includes(location)) {
         risultatiPertinenti.push(job);
         numeroRisultati++;
       }
     }
- //3. Creo un ciclo   
+
+    // 4. Controllo se jobTitle e jobLocation includono i valori creati. Se la condizione è vera, pusho i due risultait e li aggiungo all'array e alla variabile creati prima. 
+    // l'unica cosa è che non mi funziona se metto || anzichè &&. 
+    // Volevo fare in modo che l'utente trovasse risultati affini e non netti. Quindi questa funziona solo se jobTitle e JobLocation corrispondono. 
+
+    
     return {
       result: risultatiPertinenti,
       count: numeroRisultati,
     };
   
+    // 5. Ritorno i valori che contengono i risultatiPertinenti e il numeroRisultati. Così ricercaLavoroCitta trova gli annunci di lavoro che coincidono per title e location. 
   
   }
   
@@ -131,6 +141,31 @@ const jobs = [
   console.log("Risultati della ricerca:", risultati2)
   
   
-  
- 
-  
+ //________________________________________________________________________________________
+
+ const cercaButton = document.getElementById("buttonCerca");
+cercaButton.addEventListener("click", function () {
+  const titoloLavorativo = document.getElementById("inputTitolo").value;
+  const posizioneGeografica = document.getElementById("inputLocation").value;
+
+  const risultatiRicerca = ricercaLavoroCitta(titoloLavorativo, posizioneGeografica);
+
+  const risultatiDiv = document.getElementById("risultati");
+  risultatiDiv.innerHTML = ""; // Pulisci i risultati precedenti
+
+  if (risultatiRicerca.count === 0) {
+    risultatiDiv.textContent = "Nessun risultato trovato.";
+  } else {
+    // Mostra i risultati in una lista 
+    let listaRisultatiHTML = "<ul>";
+
+    for (let i = 0; i < risultatiRicerca.result.length; i++) {
+      const risultato = risultatiRicerca.result[i];
+      listaRisultatiHTML += `<li>${risultato.title} - ${risultato.location}</li>`;
+    }
+
+    listaRisultatiHTML += "</ul>";
+
+    risultatiDiv.innerHTML = listaRisultatiHTML;
+  }
+});
